@@ -1,0 +1,80 @@
+🧠 Meaning of Each Input (Simple + Exam Ready)
+1. Dependents
+Number of people financially dependent on applicant
+👉 Example:
+
+0 = no dependents
+2 = spouse + child
+
+
+2. Education
+Education level of applicant
+Graduate
+Not Graduate
+
+👉 Used to judge earning potential
+
+
+
+3. Self Employed
+Whether person works independently
+Yes = business / freelancer
+No = salaried
+
+👉 Banks see self-employed as slightly risky
+
+
+
+4. Annual Income
+Total yearly income of applicant
+👉 Example:
+
+500000 = 5 lakh
+1000000 = 10 lakh
+
+
+
+5. Loan Amount
+Amount user wants to borrow
+👉 Example:
+
+1000000 = 10 lakh loan
+
+
+
+6. Loan Term
+Duration to repay loan (in months or years depending dataset)
+👉 Example:
+
+12 = 1 year
+24 = 2 years
+
+
+
+7. CIBIL Score 
+Credit score (300–900)
+👉 Meaning:
+
+750+ → very good
+650–750 → average
+<650 → risky
+
+
+
+8. Residential Assets
+Value of house/property owned
+👉 Example:
+
+5000000 = 50 lakh house
+
+
+9. Commercial Assets
+Value of business property (shops, offices)
+
+
+10. Luxury Assets
+Cars, gold, expensive items
+
+
+11. Bank Assets
+Money in bank accounts
