@@ -324,6 +324,22 @@ input, select {
     font-family: inherit;
     font-size: 15px;
     transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b9ec7' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    padding-right: 45px;
+    cursor: pointer;
+}
+
+select option {
+    background-color: var(--navy-mid);
+    color: #fff;
+    padding: 10px;
 }
 
 input:focus, select:focus {
@@ -335,17 +351,6 @@ input:focus, select:focus {
 
 .select-wrapper {
     position: relative;
-}
-
-.select-wrapper::after {
-    content: '\ea4a'; /* Phosphor caret-down */
-    font-family: 'Phosphor';
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-secondary);
-    pointer-events: none;
 }
 
 /* Asset Grid */
