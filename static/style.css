@@ -139,7 +139,6 @@ body::before {
     to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ── Header ────────────────────────────────────────────────── */
 
 header {
     text-align: center;
@@ -179,7 +178,6 @@ h2 {
     opacity: 0.8;
 }
 
-/* ── Result Box ────────────────────────────────────────────── */
 
 .result-box {
     margin-bottom: 40px;
