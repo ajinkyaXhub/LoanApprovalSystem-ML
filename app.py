@@ -6,7 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
 
-# Ensure file path is absolute for production environments like Vercel
 base_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(base_dir, "loan.csv")
 df = pd.read_csv(csv_path)
