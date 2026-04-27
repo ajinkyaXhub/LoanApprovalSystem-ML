@@ -3,91 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Approval</title>
-    <meta name="description" content="AI Loan Approval System">
+    <title>Loan Approval | AI Credit Analysis</title>
+    <meta name="description" content="AI-powered Loan Approval System with Real-time Analysis">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+    <div class="ambient-blob blob-3"></div>
 
-<h2>Loan Approval System</h2>
+    <div class="container">
 
-{% if prediction_text %}
-<div class="result-box {% if 'Approved' in prediction_text %}approved{% else %}rejected{% endif %}">
-    
-    <div class="result-title">{{ prediction_text }}</div>
+        <header>
+            <div class="badge">AI Powered Analysis</div>
+            <h2>Loan Approval System</h2>
+            <p class="subtitle">Secure credit assessment using advanced machine learning models.</p>
+        </header>
 
-    <div class="confidence">Confidence: {{ confidence }}</div>
+        {% if prediction_text %}
+        <div class="result-box {% if 'Approved' in prediction_text %}approved{% else %}rejected{% endif %}">
+            <div class="result-content">
+                <i class="ph-bold {% if 'Approved' in prediction_text %}ph-check-circle{% else %}ph-x-circle{% endif %} result-icon"></i>
+                <div class="result-info">
+                    <div class="result-title">{{ prediction_text }}</div>
+                    <div class="confidence">Confidence Score: <span>{{ confidence }}</span></div>
+                    {% if reason %}
+                    <div class="reason">{{ reason }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
-    {% if reason %}
-    <div class="reason">Reason: {{ reason }}</div>
-    {% endif %}
+        <form action="/predict" method="post">
+            <div class="form-grid">
+                
+                <div class="section">
+                    <div class="section-header">
+                        <i class="ph-bold ph-user-focus"></i>
+                        <h3>Personal Details</h3>
+                    </div>
 
-</div>
-{% endif %}
+                    <div class="input-group">
+                        <label>Dependents</label>
+                        <input type="number" name="dependents" placeholder="0" required min="0">
+                    </div>
 
-<form action="/predict" method="post">
+                    <div class="input-group">
+                        <label>Education Level</label>
+                        <div class="select-wrapper">
+                            <select name="education">
+                                <option>Graduate</option>
+                                <option>Not Graduate</option>
+                            </select>
+                        </div>
+                    </div>
 
-<div class="form-grid">
+                    <div class="input-group">
+                        <label>Self Employed</label>
+                        <div class="select-wrapper">
+                            <select name="self_employed">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-<div class="section">
-    <h3>Personal Details</h3>
+                <div class="section">
+                    <div class="section-header">
+                        <i class="ph-bold ph-chart-line-up"></i>
+                        <h3>Financial Details</h3>
+                    </div>
 
-    <label>Dependents</label>
-    <input type="number" name="dependents" required>
+                    <div class="input-group">
+                        <label>Annual Income (₹)</label>
+                        <input type="number" name="income" placeholder="e.g. 1000000" required>
+                    </div>
 
-    <label>Education</label>
-    <select name="education">
-        <option>Graduate</option>
-        <option>Not Graduate</option>
-    </select>
+                    <div class="input-group">
+                        <label>Loan Amount (₹)</label>
+                        <input type="number" name="loan_amount" placeholder="e.g. 5000000" required>
+                    </div>
 
-    <label>Self Employed</label>
-    <select name="self_employed">
-        <option>No</option>
-        <option>Yes</option>
-    </select>
-</div>
+                    <div class="input-group">
+                        <label>Loan Term (Months)</label>
+                        <input type="number" name="loan_term" placeholder="e.g. 120" required>
+                    </div>
 
-<div class="section">
-    <h3>Financial Details</h3>
+                    <div class="input-group">
+                        <label>CIBIL Score</label>
+                        <input type="number" name="cibil" placeholder="300 - 900" required min="300" max="900">
+                    </div>
+                </div>
 
-    <label>Annual Income</label>
-    <input type="number" name="income" required>
+                <div class="section assets-section">
+                    <div class="section-header">
+                        <i class="ph-bold ph-vault"></i>
+                        <h3>Asset Valuation</h3>
+                    </div>
+                    
+                    <div class="asset-grid">
+                        <div class="input-group">
+                            <label>Residential</label>
+                            <input type="number" name="res_assets" placeholder="0">
+                        </div>
+                        <div class="input-group">
+                            <label>Commercial</label>
+                            <input type="number" name="com_assets" placeholder="0">
+                        </div>
+                        <div class="input-group">
+                            <label>Luxury</label>
+                            <input type="number" name="lux_assets" placeholder="0">
+                        </div>
+                        <div class="input-group">
+                            <label>Bank Assets</label>
+                            <input type="number" name="bank_assets" placeholder="0">
+                        </div>
+                    </div>
+                </div>
 
-    <label>Loan Amount</label>
-    <input type="number" name="loan_amount" required>
+            </div>
 
-    <label>Loan Term</label>
-    <input type="number" name="loan_term" required>
+            <button type="submit" class="submit-btn">
+                <span>Run Analysis</span>
+                <i class="ph-bold ph-sparkle"></i>
+            </button>
+        </form>
 
-    <label>CIBIL Score</label>
-    <input type="number" name="cibil" required>
-</div>
+        <footer>
+            <p>&copy; 2026 AI Loan Approval System. Built with Financial Precision.</p>
+        </footer>
 
-<div class="section">
-    <h3>Assets</h3>
-
-    <input type="number" name="res_assets" placeholder="Residential Assets">
-    <input type="number" name="com_assets" placeholder="Commercial Assets">
-</div>
-
-<div class="section">
-    <h3>Additional</h3>
-
-    <input type="number" name="lux_assets" placeholder="Luxury Assets">
-    <input type="number" name="bank_assets" placeholder="Bank Balance">
-</div>
-
-</div>
-
-<button type="submit">Analyze Loan</button>
-
-</form>
-
-</div>
+    </div>
 
 </body>
 </html>
